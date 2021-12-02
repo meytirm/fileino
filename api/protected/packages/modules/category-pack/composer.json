@@ -1,0 +1,25 @@
+{
+    "name": "modules/category-pack",
+    "description": "category rest api.",
+    "authors": [
+        {
+            "name": "Aref Norouzi",
+            "email": "caspiwebinfo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Modules\\CategoryPack\\": "src/",
+            "Database\\Factories\\":"database/factories/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\CategoryPack\\CategoryServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
