@@ -7,10 +7,8 @@
 
 <script>
 export default {
-  name: "WebsiteLayout"
+  name: 'WebsiteLayout',
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -1,15 +1,11 @@
 <template>
-  <div>
-    Admin
-  </div>
+  <div>Admin</div>
 </template>
 
 <script>
 export default {
-  name: "AdminLayout"
+  name: 'AdminLayout',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

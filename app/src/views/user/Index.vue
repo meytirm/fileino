@@ -1,15 +1,11 @@
 <template>
-    <div>
-      user
-    </div>
+  <div>user</div>
 </template>
 
 <script>
 export default {
-  name: "UserIndex.vue",
+  name: 'UserIndex.vue',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

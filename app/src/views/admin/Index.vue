@@ -1,15 +1,11 @@
 <template>
-  <div>
-    admin
-  </div>
+  <div>admin</div>
 </template>
 
 <script>
 export default {
-  name: "AdminIndex.vue",
+  name: 'AdminIndex.vue',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
