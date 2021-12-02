@@ -1,14 +1,7 @@
 <template>
-  <v-app>
-    <v-main>
-      <v-overlay class="row justify-center align-center" v-model="overlay">
-        <v-progress-circular indeterminate size="64" />
-      </v-overlay>
-      <component :is="$route.meta.layout || 'div'">
-        <router-view />
-      </component>
-    </v-main>
-  </v-app>
+  <component :is="$route.meta.layout || 'div'">
+    <router-view />
+  </component>
 </template>
 
 <script>
