@@ -1,13 +1,28 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/website/Index.vue'
+import Index from '../views/website/Index.vue'
+import Login from '../views/website/auth/Login.vue'
+import Signup from '../views/website/auth/Signup.vue'
+
 import WebsiteLayout from '../layouts/WebsiteLayout.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    meta: WebsiteLayout,
+    name: 'Index',
+    component: Index,
+    meta: { layout: WebsiteLayout },
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { layout: WebsiteLayout },
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup,
+    meta: { layout: WebsiteLayout },
   },
 ]
 

@@ -13,7 +13,6 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
     <q-page-container>
       <slot />
     </q-page-container>
@@ -34,7 +33,7 @@
   </q-layout>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'WebsiteLayout.vue',
 }
