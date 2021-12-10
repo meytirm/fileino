@@ -8,7 +8,7 @@
 export default {
   name: 'LayoutDefault',
   computed: {
-    layout() {
+    layout(): unknown {
       return this.$route.meta.layout || 'div'
     },
   },
