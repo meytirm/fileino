@@ -13,9 +13,9 @@
           </template>
         </q-toolbar-title>
         <q-separator dark vertical />
-        <q-btn stretch flat label="ورود" />
+        <q-btn to="/login" stretch flat label="ورود" />
         <q-separator dark vertical />
-        <q-btn stretch flat label="ثبت نام" />
+        <q-btn to="/signup" stretch flat label="ثبت نام" />
       </q-toolbar>
     </q-header>
     <q-page-container>
