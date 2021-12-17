@@ -15,13 +15,15 @@ config.interceptors.response.use(
   (response) => {
     console.log(response)
     Notify.create({
-      message: 'response',
+      message: 'موفق',
+      type: 'positive',
     })
     return response
   },
   (error) => {
     Notify.create({
-      message: 'error',
+      message: 'ارور',
+      type: 'negative',
     })
     return error
   }
