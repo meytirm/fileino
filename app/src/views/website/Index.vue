@@ -3,8 +3,12 @@
 </template>
 
 <script>
+import service from '@/services/axiosConfig.ts'
 export default {
   name: 'Index',
+  mounted() {
+    service.posts()
+  },
 }
 </script>
 
