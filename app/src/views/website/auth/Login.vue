@@ -1,0 +1,75 @@
+<template>
+  <q-page class="flex flex-center row">
+    <q-form @submit="onSubmit" class="q-gutter-md col-3 column">
+      <div class="text-h4 q-mb-xl text-center">ورود</div>
+
+      <q-input
+        filled
+        v-model="email"
+        type="email"
+        label="ایمیل"
+        hint="ایمیل را وارد کنید"
+        :rules="[required()]"
+      />
+
+      <q-input
+        filled
+        :type="showPassword ? 'text' : 'password'"
+        v-model="password"
+        label="پسورد"
+        hint="پسورد را وارد کنید"
+        :rules="[minLength(6)]"
+      >
+        <template #append>
+          <q-icon
+            class="cursor-pointer"
+            @click="showPassword = !showPassword"
+            :name="showPassword ? 'ion-eye-off' : 'ion-eye'"
+          />
+        </template>
+      </q-input>
+
+      <q-checkbox v-model="accept" color="green" label="مرا به خاطر بسپار" />
+
+      <div>
+        <q-btn
+          class="full-width"
+          size="lg"
+          label="ورود"
+          type="submit"
+          color="primary"
+          icon="ion-ios-log-in"
+        />
+      </div>
+    </q-form>
+  </q-page>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue'
+import { validation } from '@/mixins/validation.mixin'
+export default {
+  name: 'Login',
+  mixins: [validation],
+  setup() {
+    const email = ref('')
+    const password = ref('')
+    const accept = ref(false)
+    const showPassword = ref(false)
+
+    return {
+      email,
+      password,
+      accept,
+      showPassword,
+
+      onSubmit() {
+        console.log('sum')
+      },
+    }
+  },
+  methods: {},
+}
+</script>
+
+<style scoped></style>
