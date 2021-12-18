@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center row">
-    <q-form @submit="onSubmit" class="q-gutter-md col-3 column">
+    <q-form @submit="register" class="q-gutter-md col-3 column">
       <div class="text-h4 q-mb-xl text-center">ثبت نام</div>
 
       <q-input
@@ -67,11 +67,15 @@
 <script lang="ts">
 import { ref, computed } from 'vue'
 import { validation } from '@/mixins/validation.mixin'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'Signup',
   mixins: [validation],
   setup() {
+    const store = useStore()
+    const router = useRouter()
     const email = ref('')
     const name = ref('')
     const password = ref('')
@@ -82,8 +86,16 @@ export default {
       () => password.value === passwordConfirmation.value
     )
 
-    function onSubmit() {
-      console.log('sum')
+    function register() {
+      store
+        .dispatch('register', {
+          name: name.value,
+          email: email.value,
+          password: password.value,
+        })
+        .then(() => {
+          router.push({ name: 'UserIndex' })
+        })
     }
 
     return {
@@ -93,7 +105,7 @@ export default {
       passwordConfirmation,
       hasSamePassword,
       showPassword,
-      onSubmit,
+      register,
     }
   },
 }

@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center row">
-    <q-form @submit="onSubmit" class="q-gutter-md col-3 column">
+    <q-form @submit="login" class="q-gutter-md col-3 column">
       <div class="text-h4 q-mb-xl text-center">ورود</div>
 
       <q-input
@@ -48,24 +48,36 @@
 <script lang="ts">
 import { ref } from 'vue'
 import { validation } from '@/mixins/validation.mixin'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 export default {
-  name: 'Login',
+  name: 'Signin',
   mixins: [validation],
   setup() {
+    const router = useRouter()
+    const store = useStore()
     const email = ref('')
     const password = ref('')
     const accept = ref(false)
     const showPassword = ref(false)
+
+    function login() {
+      store
+        .dispatch('login', {
+          email: email.value,
+          password: password.value,
+        })
+        .then((ok) => {
+          if (ok) router.push({ name: 'UserIndex' })
+        })
+    }
 
     return {
       email,
       password,
       accept,
       showPassword,
-
-      onSubmit() {
-        console.log('sum')
-      },
+      login,
     }
   },
   methods: {},

@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios'
 import { Notify } from 'quasar'
-
 import axios from 'axios'
+import store from '../store/index'
+
 const config = axios.create({
   baseURL: 'http://localhost:3000',
   headers: {
@@ -11,36 +11,32 @@ const config = axios.create({
   timeout: 10000,
 })
 
+let message = ''
+
 config.interceptors.response.use(
   (response) => {
-    console.log(response)
-    Notify.create({
-      message: 'موفق',
-      type: 'positive',
-    })
+    if (response.data.message) {
+      message = response.data.message
+      Notify.create({
+        message: message,
+        type: 'positive',
+      })
+    }
     return response
   },
   (error) => {
-    Notify.create({
-      message: 'ارور',
-      type: 'negative',
-    })
+    // if (error.response.status === 401) {
+    //   store.dispatch('logout')
+    // }
+    if (error.response.data.error) {
+      message = error.response.data.error
+      Notify.create({
+        message: message,
+        type: 'negative',
+      })
+    }
     return error
   }
 )
 
-export default {
-  posts() {
-    config
-      .get('/posts')
-      .then((response: AxiosResponse<unknown>) => {
-        return response.data
-      })
-      .then((data: AxiosResponse<unknown>) => {
-        console.log(data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  },
-}
+export default config

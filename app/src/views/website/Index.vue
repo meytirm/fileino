@@ -2,13 +2,9 @@
   <q-page class="flex flex-center"> index </q-page>
 </template>
 
-<script>
-import service from '@/services/axiosConfig.ts'
+<script lang="ts">
 export default {
   name: 'Index',
-  mounted() {
-    service.posts()
-  },
 }
 </script>
 
