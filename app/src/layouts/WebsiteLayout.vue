@@ -18,11 +18,19 @@
             <q-btn stretch flat :label="link.label" />
           </template>
         </q-toolbar-title>
-
-        <q-separator dark vertical />
-        <q-btn to="/login" stretch flat label="ورود" />
-        <q-separator dark vertical />
-        <q-btn to="/signup" stretch flat label="ثبت نام" />
+        <template v-if="!loggedIn">
+          <q-separator dark vertical />
+          <q-btn :to="{ name: 'Signin' }" stretch flat label="ورود" />
+          <q-separator dark vertical />
+          <q-btn :to="{ name: 'Signup' }" stretch flat label="ثبت نام" />
+        </template>
+        <template v-else>
+          <q-separator dark vertical />
+          <q-btn @click="logout" stretch flat label="خارج شدن" />
+          <q-separator dark vertical />
+          <q-btn :to="{ name: 'UserIndex' }" stretch flat label="داشبورد" />
+          <q-separator dark vertical />
+        </template>
       </q-toolbar>
     </q-header>
 
@@ -44,18 +52,29 @@
 </template>
 
 <script lang="ts">
+import { loggedStatusStore } from '@/store/helpers/logged-status.store'
+import { useStore } from 'vuex'
 export default {
   name: 'WebsiteLayout.vue',
   setup() {
+    const store = useStore()
     const links = [
       { name: 'Newest', label: 'جدیدترین' },
       { name: 'Javascript', label: 'جاوااسکریپت' },
       { name: 'Laravel', label: 'لاراول' },
     ]
 
+    function logout() {
+      store.dispatch('logout')
+    }
+
     return {
       links,
+      logout,
     }
+  },
+  computed: {
+    ...loggedStatusStore,
   },
 }
 </script>
