@@ -7,13 +7,19 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "nodemon server.js & vue-cli-service serve"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.24.0",
+    "body-parser": "^1.19.1",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
     "quasar": "^2.0.0",
+    "sqlite3": "^5.0.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
