@@ -9,7 +9,7 @@
 <script lang="ts">
 import dashboard from '@/services/user/dashboard.service'
 import { AxiosResponse } from 'axios'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 export default {
   name: 'UserIndex',
   setup() {
@@ -17,6 +17,7 @@ export default {
     dashboard
       .posts()
       .then((response) => {
+        console.log(response)
         return response.data
       })
       .then((data) => {

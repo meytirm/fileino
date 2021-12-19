@@ -93,8 +93,8 @@ export default {
           email: email.value,
           password: password.value,
         })
-        .then(() => {
-          router.push({ name: 'UserIndex' })
+        .then((ok) => {
+          if (ok) router.push({ name: 'UserIndex' })
         })
     }
 

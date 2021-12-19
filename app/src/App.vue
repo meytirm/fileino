@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import { useStore } from 'vuex'
-import config from '@/services/axiosConfig'
 
 export default {
   name: 'LayoutDefault',

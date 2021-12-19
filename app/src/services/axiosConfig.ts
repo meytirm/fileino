@@ -25,15 +25,14 @@ config.interceptors.response.use(
     return response
   },
   (error) => {
-    // if (error.response.status === 401) {
-    //   store.dispatch('logout')
-    // }
-    if (error.response.data.error) {
-      message = error.response.data.error
-      Notify.create({
-        message: message,
-        type: 'negative',
-      })
+    if (error.response) {
+      if (error.response.data.error) {
+        message = error.response.data.error
+        Notify.create({
+          message: message,
+          type: 'negative',
+        })
+      }
     }
     return error
   }

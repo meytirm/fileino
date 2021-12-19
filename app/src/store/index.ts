@@ -22,9 +22,15 @@ export default createStore({
   },
   actions: {
     register({ commit }, data) {
-      return auth.register(data).then(({ data }) => {
-        commit('SET_USER_DATA', data)
-      })
+      return auth
+        .register(data)
+        .then(({ data }) => {
+          commit('SET_USER_DATA', data)
+          return true
+        })
+        .catch((e) => {
+          return false
+        })
     },
     login({ commit }, data) {
       return auth
